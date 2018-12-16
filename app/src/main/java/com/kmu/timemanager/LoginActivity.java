@@ -57,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
                         Log.d("select ", "no : " + no + "\nrest_id : " + rest_id);
                     }
                     if(cursor.getCount() == 1) {
-                        // 해당 이메일과 아이디가 있으면 1개의 row를 가져오겠죠?
+                        // 해당 이메일과 아이디가 있을경우
                         Toast.makeText(LoginActivity.this, userId+ "님 환영합니다", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                         intent.putExtra("userId", userId);
@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        // 없다면 아무 값도 가져오지 않으므로 count 가 0 이겠죠?
+                        // 아이디가 없을 경우
                         Toast.makeText(LoginActivity.this, "아이디 또는 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
                     }
                     cursor.close();
