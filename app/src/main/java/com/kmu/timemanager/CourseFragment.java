@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -70,6 +71,9 @@ public class CourseFragment extends Fragment {
     private Spinner termSpinner;
     private ArrayAdapter areaAdapter;
     private Spinner areaSpinner;
+    private ArrayAdapter majorAdapter;
+    private Spinner majorSpinner;
+
 
     private String courseUniversity = "";
     private String courseYear = "";
@@ -83,6 +87,7 @@ public class CourseFragment extends Fragment {
         yearSpinner = (Spinner) getView().findViewById(R.id.yearSpinner);
         termSpinner = (Spinner) getView().findViewById(R.id.termSpinner);
         areaSpinner = (Spinner) getView().findViewById(R.id.areaSpinner);
+        majorSpinner = (Spinner) getView().findViewById(R.id.majorSpinner);
 
         courseUniversityGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -99,16 +104,43 @@ public class CourseFragment extends Fragment {
                 if(courseUniversity.equals("학부")) {
                     areaAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.universityArea, android.R.layout.simple_spinner_dropdown_item);
                     areaSpinner.setAdapter(areaAdapter);
+                    majorAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.universityRefinementMajor, android.R.layout.simple_spinner_dropdown_item);
+                    majorSpinner.setAdapter(majorAdapter);
                 }
 
                 else if(courseUniversity.equals("대학원")) {
                     areaAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.graduateArea, android.R.layout.simple_spinner_dropdown_item);
                     areaSpinner.setAdapter(areaAdapter);
+                    majorAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.universityMajor, android.R.layout.simple_spinner_dropdown_item);
+                    majorSpinner.setAdapter(majorAdapter);
                 }
 
             }
         });
 
+        areaSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(areaSpinner.getSelectedItem().equals("교양및기타")){
+                    majorAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.universityRefinementMajor, android.R.layout.simple_spinner_dropdown_item);
+                    majorSpinner.setAdapter(majorAdapter);
+                }
+                if(areaSpinner.getSelectedItem().equals("전공")){
+                    majorAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.universityMajor, android.R.layout.simple_spinner_dropdown_item);
+                    majorSpinner.setAdapter(majorAdapter);
+                }
+                if(areaSpinner.getSelectedItem().equals("일반대학원")){
+                    majorAdapter = ArrayAdapter.createFromResource(getActivity(), R.array.universityMajor, android.R.layout.simple_spinner_dropdown_item);
+                    majorSpinner.setAdapter(majorAdapter);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
 
     @Override
@@ -145,4 +177,6 @@ public class CourseFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

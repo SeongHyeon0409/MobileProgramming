@@ -1,14 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="major">
-        <item>소프트웨어학부</item>
-        <item>한국어문학부</item>
-        <item>한국어문학부</item>
-        <item>한국어문학부</item>
-        <item>한국어문학부</item>
-        <item>한국어문학부</item>
-        <item>한국어문학부</item>
-        <item>한국어문학부</item>
+    <string-array name="universityRefinementMajor">
+        <item>인문1</item>
+        <item>인문2</item>
+        <item>소통</item>
+        <item>글로벌</item>
+        <item>창의</item>
+
+    </string-array>
+
+    <string-array name="universityMajor">
+        <item>유아교육과</item>
+        <item>초등교육과</item>
+        <item>교육학과</item>
+        <item>국어교육과</item>
+        <item>영어교육과</item>
+        <item>지리교육과</item>
+        <item>역사교육과</item>
+        <item>체육교육과</item>
+        <item>컴퓨터교육과</item>
 
     </string-array>
 
@@ -29,14 +39,12 @@
     </string-array>
 
     <string-array name="graduateArea">
-        <item>교육학공통</item>
-        <item>선수</item>
-        <item>전공</item>
+        <item>일반대학원</item>
+
     </string-array>
 
     <string-array name="universityArea">
-        <item>핵심교양</item>
-        <item>자유교양</item>
+        <item>교양및기타</item>
         <item>전공</item>
     </string-array>
 </resources>

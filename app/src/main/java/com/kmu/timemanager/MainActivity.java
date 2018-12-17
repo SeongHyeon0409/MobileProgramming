@@ -8,15 +8,42 @@ import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+
+    private ListView noticeListView;
+    private NoticeListAdapter adapter;
+    private List<Notice> noticeList;
+
+    public MainActivity() {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        noticeListView = (ListView) findViewById(R.id.noticeListView);
+        noticeList = new ArrayList<Notice>();
+        noticeList.add(new Notice("안녕하세요.","유성현","2018-12-18"));
+        noticeList.add(new Notice("안녕하세요.","유성현","2018-12-18"));
+        noticeList.add(new Notice("안녕하세요.","유성현","2018-12-18"));
+        noticeList.add(new Notice("안녕하세요.","유성현","2018-12-18"));
+
+        noticeList.add(new Notice("안녕하세요.","유성현","2018-12-18"));
+        noticeList.add(new Notice("안녕하세요.","유성현","2018-12-18"));
+        noticeList.add(new Notice("안녕하세요.","유성현","2018-12-18"));
+        noticeList.add(new Notice("안녕하세요.","유성현","2018-12-18"));
+        adapter = new NoticeListAdapter(getApplicationContext(), noticeList);
+        noticeListView.setAdapter(adapter);
+
 
         final Button courseButton = (Button) findViewById(R.id.courseButton);
         final Button scheduleButton = (Button) findViewById(R.id.scheduleButton);
